@@ -5,7 +5,7 @@ import prompt_toolkit.validation
 
 @pytest.fixture(scope="session")
 def copier_config_path() -> pathlib.Path:
-    return pathlib.Path(__file__).parent.parent.parent
+    return pathlib.Path(__file__).parent.parent
 
 @pytest.fixture
 def test_data() -> dict:
@@ -14,18 +14,23 @@ def test_data() -> dict:
         "author_email": "test@email.test",
         "project_name": "ProjectName",
         "module_name": "test_api",
-        "project_license": "MIT"
+        "project_license": "MIT License"
     }
 
 def test_template_generation(tmpdir, copier_config_path, test_data):
     copier.run_copy(copier_config_path.as_posix(), tmpdir, data=test_data)
     assert [
-        file.name for file in pathlib.Path(tmpdir).glob('**/*')
+        basedir.name for basedir in pathlib.Path(tmpdir).glob('*')
+        ] == [test_data["project_name"]]
+    
+    assert [
+        file.name for file in pathlib.Path(tmpdir).glob('**/*') if file.is_file()
         ] == [
         'LICENSE', 
         '.copier-answers.yml', 
         'README.md'
         ]
+
 
 
 @pytest.mark.parametrize(

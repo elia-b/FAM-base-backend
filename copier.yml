@@ -1,4 +1,4 @@
-_subdirectory: fam_base_backend/template
+_subdirectory: template
 _templates_suffix: ""
 
 author_name:
@@ -32,7 +32,7 @@ module_name:
       {% if not (module_name | regex_search('^[a-z][a-z0-9\_]+$')) %}
       The module name must start with a letter, followed by one or more letters, digits or underscore all lowercase.
       {% endif %}
-      
+
 project_license:
   choices: 
       - MIT License
