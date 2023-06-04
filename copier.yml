@@ -1,0 +1,41 @@
+_subdirectory: fam_base_backend/template
+_templates_suffix: ""
+
+author_name:
+  type: str
+  help: What is your name?
+  validator: >-
+      {% if not (author_name | regex_search('^[a-zA-Z][a-zA-Z0-9\- ]+$')) %}
+      The author name must start with a letter, followed by one or more letters, digits, spaces or dashes all lowercase.
+      {% endif %}
+
+author_email:
+  type: str
+  help: What is your e-mail?
+  validator: >-
+      {% if not (author_email | regex_search('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')) %}
+      The e-mail seems to be not valid, try again. If this message persist contact the maintainers of this repo.
+      {% endif %}
+
+project_name:
+  type: str
+  help: What is your project name?
+  validator: >-
+      {% if not (project_name | regex_search('^[a-zA-Z][a-zA-Z0-9\_\-]+$')) %}
+      The project name must start with a letter, followed by one or more letters, digits or underscore or dash.
+      {% endif %}
+
+module_name:
+  type: str
+  help: What is your API name?
+  validator: >-
+      {% if not (module_name | regex_search('^[a-z][a-z0-9\_]+$')) %}
+      The module name must start with a letter, followed by one or more letters, digits or underscore all lowercase.
+      {% endif %}
+      
+project_license:
+  choices: 
+      - MIT License
+      - None
+  default: MIT License
+  type: str

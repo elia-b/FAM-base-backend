@@ -1,0 +1,6 @@
+# To test locally
+temp/
+
+# Python stuff
+__pycache__/
+.pytest_cache/

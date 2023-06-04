@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "fam-base-backend"
+version = "0.1.0"
+description = "A template for Python backend services based on FastAPI and MongoDB"
+authors = ["elia-b <elia.boscaini@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "fam_base_backend"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+copier = "^8.0.0"
+pytest = "^7.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
